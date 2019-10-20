@@ -8,7 +8,40 @@ COLORS
 #E9B872
 **********************************/
 
+body {
+  color: #151515;
+  background-image: linear-gradient(#ffffff30, #ffffff30),
+    url("germany-1454777_1280.jpg");
+  background-size: cover;
+  font-family: "Open Sans", Arial, sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+.hide {
+  display: none;
+}
+
 /***** HEADER *****/
+
+.header {
+  color: #ffffff;
+  margin: 40px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.heading-primary {
+  font-family: "Germania One", Arial, sans-serif;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.intro {
+  color: #bbbbbb;
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+}
 
 /***** GAME CONTENT *****/
 
