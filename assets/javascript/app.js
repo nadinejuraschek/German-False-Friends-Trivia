@@ -144,7 +144,7 @@ $(document).ready(function () {
         checkAnswer();
         questionIndex++;
         // TEST
-        console.log("Correct Answers: " + correctAnswers + " Questions Answered: " + questionIndex);
+        console.log("Correct Answers: " + correctAnswers + " Questions Answered: " + questionIndex + "/10");
 
         // set up how long game should run
         if (questionIndex < questions.length) {

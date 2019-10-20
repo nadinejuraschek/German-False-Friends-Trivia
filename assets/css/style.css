@@ -11,7 +11,7 @@ COLORS
 body {
   color: #151515;
   background-image: linear-gradient(#ffffff30, #ffffff30),
-    url("germany-1454777_1280.jpg");
+    url("../images/germany-1454777_1280.jpg");
   background-size: cover;
   font-family: "Open Sans", Arial, sans-serif;
   height: 100vh;
