@@ -66,6 +66,8 @@ var questionIndex = 0;
 var correctAnswers = 0;
 
 // timer variables
+var clockRunning = false;
+var intervalId;
 
 /******************************
 FUNCTIONS
@@ -92,6 +94,29 @@ OBJECTS
 ******************************/
 
 // timer
+var timer = {
+    time: 100,
+    start: function () {
+        if (!clockRunning) {
+            intervalId = setInterval(timer.count, 1000);
+            clockRunning = true;
+        }
+    },
+    count: function () {
+        timer.time = timer.time - 1;
+        // display remaining time
+        $("#timer").text(timer.time);
+        // hide questions when timer runs out and display score
+        if (timer.time == 0) {
+            $(".container").hide();
+            $("#result").html("You got " + correctAnswers + " out of " + questionIndex + " questions correct! Gut gemacht!").hide();
+            $("#result").fadeIn(1000);
+            clearInterval(intervalId);
+            clockRunning = false;
+            $("#game-over").append("Time's Up!");
+        }
+    }
+};
 
 /******************************
 GAME CODE
