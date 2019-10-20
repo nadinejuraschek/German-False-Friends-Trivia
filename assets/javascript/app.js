@@ -1,7 +1,6 @@
 /******************************
 VARIABLES
 ******************************/
-
 // store questions, answer options, and solutions
 var questions = [
     {
@@ -72,7 +71,6 @@ var intervalId;
 /******************************
 FUNCTIONS
 ******************************/
-
 function displayQuestion() {
     // display question
     $('#question').text(questions[questionIndex].question);
@@ -92,7 +90,6 @@ function checkAnswer() {
 /******************************
 OBJECTS
 ******************************/
-
 // timer
 var timer = {
     time: 100,
@@ -121,3 +118,50 @@ var timer = {
 /******************************
 GAME CODE
 ******************************/
+$(document).ready(function () {
+    // hide trivia-body from page before game is started
+    $("#result").hide();
+    $('.container').hide();
+    $('#remaining-time').hide();
+    // set up start button
+    $('#start-btn').click(function () {
+        // trivia-body and timer are displayed
+        $('.container').fadeIn();
+        $('#remaining-time').fadeIn();
+        // hide start button
+        $(this).hide();
+        // start timer
+        timer.start();
+    });
+
+    displayQuestion();
+
+    // display new question
+    $('#next-btn').click(function () {
+        // keeps button from submitting form
+        event.preventDefault();
+        // check chosen answer
+        checkAnswer();
+        questionIndex++;
+        // TEST
+        console.log("Correct Answers: " + correctAnswers + " Questions Answered: " + questionIndex);
+
+        // set up how long game should run
+        if (questionIndex < questions.length) {
+            displayQuestion();
+            // change next button to submit button on last question
+            if (questionIndex == questions.length - 1) {
+                $("#next-btn").html("Submit");
+                $("#next-btn").click(function () {
+                    // hide questions
+                    $(".container").hide();
+                    // display score
+                    $("#result").html("You got " + correctAnswers + " out of " + questionIndex + " questions correct! <br> Gut gemacht!").hide();
+                    $("#result").fadeIn(1000);
+                    clearInterval(intervalId);
+                    clockRunning = false;
+                });
+            };
+        };
+    });
+});
