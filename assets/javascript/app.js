@@ -71,9 +71,21 @@ var correctAnswers = 0;
 FUNCTIONS
 ******************************/
 
-// display question
+function displayQuestion() {
+    // display question
+    $('#question').text(questions[questionIndex].question);
+    // display answer options
+    $('#opt1').html('<label><input type="radio" name="option" value="1" >   ' + questions[questionIndex].choices[0] + '</label>');
+    $('#opt2').html('<label><input type="radio" name="option" value="2" >   ' + questions[questionIndex].choices[1] + '</label>');
+    $('#opt3').html('<label><input type="radio" name="option" value="3" >   ' + questions[questionIndex].choices[2] + '</label>');
+};
 
 // check if chosen answer is correct
+function checkAnswer() {
+    if ($('input[name=option]:checked').val() == questions[questionIndex].correctAnswer) {
+        correctAnswers++;
+    }
+};
 
 /******************************
 OBJECTS
